@@ -11,6 +11,17 @@ yay -S helm helmfile
 helm plugin install https://github.com/databus23/helm-diff
 ```
 
+## ArgoCD
+
+After installing ArgoCD on Kind, access the UI
+
+```shell
+# Get the password
+kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d
+# Port forward the server
+kubectl port-forward -n argocd deployments/argocd-server 8080:8080
+```
+
 ## Links
 
 - <https://taskfile.dev/>
