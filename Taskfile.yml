@@ -1,0 +1,14 @@
+---
+version: '3'
+
+includes:
+  kind:
+    taskfile: ./deployments/kind
+    dir: ./deployments/kind
+
+
+tasks:
+  helmfile:apply:
+    desc: "Apply helmfile.yaml"
+    cmds:
+      - helmfile apply
