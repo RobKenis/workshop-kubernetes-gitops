@@ -8,18 +8,9 @@ spec:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   source:
-    path: deployments/kubernetes/application
+    path: deployments/kubernetes/integration
     repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
     targetRevision: main
-  kustomize:
-    patches:
-    - target:
-        kind: Namespace
-        name: integration
-      patch: |-
-      - op: replace
-        path: /metadata/name
-        value: integration
   project: default
   syncPolicy:
     automated:
