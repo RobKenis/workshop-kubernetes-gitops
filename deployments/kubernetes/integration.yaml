@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: integration
+spec:
+  destination:
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: deployments/kubernetes/application
+    repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
+    targetRevision: main
+  kustomize:
+    patches:
+    - target:
+        kind: Namespace
+        name: integration
+      patch: |-
+      - op: replace
+        path: /metadata/name
+        value: integration
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      allowEmpty: false
