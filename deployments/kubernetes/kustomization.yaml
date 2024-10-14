@@ -3,3 +3,4 @@ kind: Kustomization
 
 resources:
 - integration.yaml
+- metrics-server.yaml
