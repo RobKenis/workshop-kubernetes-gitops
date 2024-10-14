@@ -18,3 +18,9 @@ spec:
         ports:
         - containerPort: 8080
           name: web
+        resources:
+          limits:
+            memory: 10Mi
+          requests:
+            cpu: 10m
+            memory: 10Mi
