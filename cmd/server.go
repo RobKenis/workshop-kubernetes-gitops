@@ -35,7 +35,7 @@ const templ = `<!DOCTYPE html>
 <body>
 	<div class="container">
     	<h1>Workshop GitOps on Kubernetes</h1>
-		<p>I am running in the <strong>{{ .Namespace }}</strong> namespace</p>
+		<p>I am running in the <strong>{{ .Namespace }}</strong> namespace.</p>
 	</div>
 </body>
 
