@@ -1,17 +1,14 @@
----
 repositories:
-  - name: argo
-    url: https://argoproj.github.io/argo-helm
+- name: argo
+  url: https://argoproj.github.io/argo-helm
 
 releases:
-  - name: argocd
-    namespace: argocd
-    chart: argo/argo-cd
-    createNamespace: true
-    values:
-    - dex:
-        enabled: false
-    - notifications:
-        enabled: false
-    - redis:
-        enabled: false
+- name: argocd
+  namespace: argocd
+  chart: argo/argo-cd
+  createNamespace: true
+  values:
+  - dex:
+      enabled: false
+  - notifications:
+      enabled: false

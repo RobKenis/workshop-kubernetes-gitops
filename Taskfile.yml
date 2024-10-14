@@ -14,6 +14,10 @@ tasks:
     desc: "Apply helmfile.yaml"
     cmds:
     - helmfile apply
+  argo:bootstrap:
+    desc: "Bootstrap ArgoCD - Install App of Apps"
+    cmds:
+    - kubectl apply -f deployments/kubernetes/bootstrap/manifest.yaml
   image:build:
     desc: "Build image"
     cmds:
