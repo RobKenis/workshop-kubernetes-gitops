@@ -1,5 +1,7 @@
----
 version: '3'
+
+env:
+  IMAGE_BUILDER: podman
 
 includes:
   kind:
@@ -11,4 +13,9 @@ tasks:
   helmfile:apply:
     desc: "Apply helmfile.yaml"
     cmds:
-      - helmfile apply
+    - helmfile apply
+  image:build:
+    desc: "Build image"
+    cmds:
+    - $IMAGE_BUILDER build -f build/package/Dockerfile .
+    silent: true
