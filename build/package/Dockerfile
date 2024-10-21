@@ -12,6 +12,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o server cmd/server.go
 
 FROM scratch
 
+LABEL org.opencontainers.image.source = "https://github.com/RobKenis/workshop-kubernetes-gitops"
+
 WORKDIR /app
 
 COPY --from=builder /build/server server
