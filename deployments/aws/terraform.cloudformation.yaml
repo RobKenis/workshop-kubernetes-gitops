@@ -1,0 +1,15 @@
+Description: Terraform S3 Bucket and DynamoDB Table for State Management
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+  Table:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: LockID
+        AttributeType: S
+      KeySchema:
+      - AttributeName: LockID
+        KeyType: HASH
+      TableName: terraform-state-lock
