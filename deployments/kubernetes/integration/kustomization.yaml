@@ -13,3 +13,12 @@ patches:
     - op: replace
       path: /metadata/name
       value: integration
+- target:
+    kind: Ingress
+  patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: integration.workshop.robkenis.dev
+    - op: replace
+      path: /spec/tls/0/hosts/0
+      value: integration.workshop.robkenis.dev

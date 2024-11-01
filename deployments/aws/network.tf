@@ -22,6 +22,7 @@ resource "aws_subnet" "workshop" {
   tags = {
     Name                     = "workshop-${count.index}"
     "karpenter.sh/discovery" = "workshop-gitops"
+    "kubernetes.io/role/elb" = "1"
   }
 }
 

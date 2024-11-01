@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: default
+  name: application
+spec:
+  ingressClassName: alb
+  rules:
+  - host: MANAGED_BY_KUSTOMIZE
+    http:
+      paths:
+      - backend:
+          service:
+            name: application
+            port:
+              name: web
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - MANAGED_BY_KUSTOMIZE
