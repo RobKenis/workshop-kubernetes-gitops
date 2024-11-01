@@ -112,3 +112,30 @@ resource "aws_eks_pod_identity_association" "lb_controller" {
   service_account = "aws-load-balancer-controller"
   role_arn        = aws_iam_role.lb_controller.arn
 }
+
+resource "aws_iam_role" "external_dns" {
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = ["sts:AssumeRole", "sts:TagSession"]
+        Effect = "Allow"
+        Principal = {
+          Service = "pods.eks.amazonaws.com"
+        }
+      },
+    ]
+  })
+}
+
+resource "aws_iam_role_policy" "external_dns" {
+  role   = aws_iam_role.external_dns.name
+  policy = file("${path.module}/policies/external_dns.json")
+}
+
+resource "aws_eks_pod_identity_association" "external_dns" {
+  cluster_name    = module.eks.cluster_name
+  namespace       = "kube-system"
+  service_account = "external-dns"
+  role_arn        = aws_iam_role.external_dns.arn
+}

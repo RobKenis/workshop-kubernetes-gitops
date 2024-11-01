@@ -6,6 +6,7 @@ resources:
 - karpenter-nodes/
 - integration.yaml
 - load-balancer-controller.yaml
+- external-dns.yaml
 
 patches:
 - target:
