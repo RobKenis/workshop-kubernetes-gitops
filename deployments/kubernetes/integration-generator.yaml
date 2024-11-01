@@ -13,29 +13,29 @@ spec:
   template:
     metadata:
       name: '{{.name}}-application'
-spec:
-  destination:
-    namespace: argocd
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: deployments/kubernetes/integration
-    repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
-    targetRevision: main
-    kustomize:
-      namespace: "{{.name}}"
-      patches:
-      - target:
-          kind: Namespace
-        patch: |-
-          - op: replace
-            path: /metadata/name
-            value: {{.name}}
-      - target:
-          kind: Ingress
-        patch: |-
-          - op: replace
-            path: /spec/rules/0/host
-            value: {{.name}}.workshop.robkenis.dev
-          - op: replace
-            path: /spec/tls/0/hosts/0
-            value: {{.name}}.workshop.robkenis.dev
+    spec:
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
+      source:
+        path: deployments/kubernetes/integration
+        repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
+        targetRevision: main
+        kustomize:
+          namespace: "{{.name}}"
+          patches:
+          - target:
+              kind: Namespace
+            patch: |-
+              - op: replace
+                path: /metadata/name
+                value: {{.name}}
+          - target:
+              kind: Ingress
+            patch: |-
+              - op: replace
+                path: /spec/rules/0/host
+                value: {{.name}}.workshop.robkenis.dev
+              - op: replace
+                path: /spec/tls/0/hosts/0
+                value: {{.name}}.workshop.robkenis.dev
