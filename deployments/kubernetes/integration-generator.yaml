@@ -12,7 +12,7 @@ spec:
       - name: first
   template:
     metadata:
-      name: '{{.name}}-application'
+      name: '{{.name}}'
     spec:
       project: default
       destination:
