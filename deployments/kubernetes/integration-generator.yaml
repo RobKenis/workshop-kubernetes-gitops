@@ -8,10 +8,7 @@ spec:
   goTemplateOptions: ["missingkey=error"]
   generators:
   - list:
-      elements:
-      - name: first
-      - name: second
-      - name: third
+      elements: []
   template:
     metadata:
       name: '{{.name}}'
