@@ -5,6 +5,7 @@ resources:
 - karpenter.yaml
 - karpenter-nodes/
 - integration.yaml
+- load-balancer-controller.yaml
 
 patches:
 - target:
