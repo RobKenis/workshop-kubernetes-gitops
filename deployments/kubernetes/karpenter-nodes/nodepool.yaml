@@ -34,4 +34,4 @@ spec:
         - spot
       - key: "karpenter.k8s.aws/instance-size"
         operator: In
-        values: ["medium"]
+        values: ["small", "medium"]
