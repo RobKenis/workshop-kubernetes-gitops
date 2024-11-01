@@ -13,6 +13,7 @@ spec:
   template:
     metadata:
       name: '{{.name}}'
+      finalizers: [resources-finalizer.argocd.argoproj.io]
     spec:
       project: default
       syncPolicy:
