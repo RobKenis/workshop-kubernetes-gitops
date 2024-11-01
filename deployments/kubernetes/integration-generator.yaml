@@ -10,6 +10,8 @@ spec:
   - list:
       elements:
       - name: first
+      - name: second
+      - name: third
   template:
     metadata:
       name: '{{.name}}'
