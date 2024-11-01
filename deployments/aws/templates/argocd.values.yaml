@@ -8,6 +8,8 @@ notifications:
   enabled: false
 
 configs:
+  cm:
+    timeout.reconciliation: 60s
   repositories:
     "workshop-kubernetes-gitops":
       url: "git@github.com:RobKenis/workshop-kubernetes-gitops.git"
