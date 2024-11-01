@@ -8,7 +8,7 @@ spec:
   - alias: bottlerocket@1.26.1
   metadataOptions:
     httpPutResponseHopLimit: 2
-  role: arn:aws:iam::840471932663:role/Karpenter-workshop-gitops-20241101104906973200000002
+  role: Karpenter-workshop-gitops-20241101104906973200000002
   securityGroupSelectorTerms:
   - tags:
       karpenter.sh/discovery: workshop-gitops
