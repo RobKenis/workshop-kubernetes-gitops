@@ -1,14 +1,3 @@
-data "aws_vpc" "default" {
-  default = true
-}
-
-data "aws_subnets" "default" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
-  }
-}
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
@@ -28,9 +17,9 @@ module "eks" {
     vpc-cni                = {}
   }
 
-  vpc_id                   = data.aws_vpc.default.id
-  subnet_ids               = data.aws_subnets.default.ids
-  control_plane_subnet_ids = data.aws_subnets.default.ids
+  vpc_id                   = aws_vpc.workshop.id
+  subnet_ids               = aws_subnet.workshop[*].id
+  control_plane_subnet_ids = aws_subnet.workshop[*].id
 
   eks_managed_node_group_defaults = {
     instance_types = ["t4g.medium", "t4g.large"]
@@ -64,7 +53,7 @@ module "eks" {
 
       policy_associations = {
         admin = {
-          policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
           access_scope = {
             type = "cluster"
           }

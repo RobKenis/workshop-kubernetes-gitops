@@ -8,4 +8,6 @@ resource "helm_release" "argocd" {
   create_namespace = true
 
   values = [templatefile("${path.module}/argocd.values.yaml", {})]
+
+  depends_on = [ module.eks ]
 }

@@ -5,7 +5,7 @@ terraform {
       version = "~> 5.0"
     }
     helm = {
-      source = "hashicorp/helm"
+      source  = "hashicorp/helm"
       version = "~> 2.0"
     }
   }
@@ -22,6 +22,11 @@ terraform {
 
 provider "aws" {
   region = "eu-central-1"
+  default_tags {
+    tags = {
+      "Project" = "git@github.com:RobKenis/workshop-kubernetes-gitops.git"
+    }
+  }
 }
 
 provider "helm" {
