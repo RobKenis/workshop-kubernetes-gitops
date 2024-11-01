@@ -32,3 +32,6 @@ spec:
         values:
         - on-demand
         - spot
+      - key: "karpenter.k8s.aws/instance-cpu"
+        operator: Gt
+        values: ["2"]
