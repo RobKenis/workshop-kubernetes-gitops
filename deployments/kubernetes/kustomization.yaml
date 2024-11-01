@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - karpenter.yaml
+- karpenter-nodes/
 - integration.yaml
 
 patches:

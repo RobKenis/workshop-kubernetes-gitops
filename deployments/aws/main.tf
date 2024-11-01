@@ -21,6 +21,10 @@ module "eks" {
   subnet_ids               = aws_subnet.workshop[*].id
   control_plane_subnet_ids = aws_subnet.workshop[*].id
 
+  node_security_group_tags = {
+    "karpenter.sh/discovery" = "workshop-gitops"
+  }
+
   eks_managed_node_group_defaults = {
     instance_types = ["t4g.medium", "t4g.large"]
   }

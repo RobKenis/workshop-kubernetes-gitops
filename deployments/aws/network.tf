@@ -20,7 +20,8 @@ resource "aws_subnet" "workshop" {
   availability_zone       = data.aws_availability_zones.default.names[count.index]
   map_public_ip_on_launch = true // Ugh
   tags = {
-    Name = "workshop-${count.index}"
+    Name                     = "workshop-${count.index}"
+    "karpenter.sh/discovery" = "workshop-gitops"
   }
 }
 
