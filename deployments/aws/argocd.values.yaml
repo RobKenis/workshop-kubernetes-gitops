@@ -1,8 +1,0 @@
-global:
-  tolerations:
-  - key: CriticalAddonsOnly
-    operator: Exists
-dex:
-  enabled: false
-notifications:
-  enabled: false

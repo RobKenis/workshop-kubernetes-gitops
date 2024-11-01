@@ -1,0 +1,16 @@
+global:
+  tolerations:
+  - key: CriticalAddonsOnly
+    operator: Exists
+dex:
+  enabled: false
+notifications:
+  enabled: false
+
+configs:
+  repositories:
+    "workshop-kubernetes-gitops":
+      url: "git@github.com:RobKenis/workshop-kubernetes-gitops.git"
+      type: git
+      sshPrivateKey: |
+        ${sshPrivateKey}
