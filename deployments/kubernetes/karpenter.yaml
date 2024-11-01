@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: karpenter
+  namespace: argocd
+spec:
+  destination:
+    namespace: karpenter
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: karpenter
+    helm:
+      releaseName: karpenter
+      values: |
+        replicas: 1
+        settings:
+          clusterName: workshop-gitops
+          featureGates:
+            spotToSpotConsolidation: true
+        podAnnotations:
+          prometheus.io/scrape: 'true'
+          prometheus.io/port: '8080'
+    repoURL: public.ecr.aws/karpenter
+    targetRevision: 1.0.6
+  syncPolicy:
+    automated:
+      allowEmpty: false
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

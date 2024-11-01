@@ -2,4 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+- karpenter.yaml
 - integration.yaml
+
+patches:
+- target:
+    kind: Application
+  patch: |-
+    - op: add
+      path: /metadata/finalizers
+      value: [ resources-finalizer.argocd.argoproj.io ]
