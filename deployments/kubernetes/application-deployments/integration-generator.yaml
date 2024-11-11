@@ -11,6 +11,7 @@ spec:
   #     elements:
   #     - name: this-is-a-valid-branch
   - pullRequest:
+      requeueAfterSeconds: 60
       bitbucket:
         owner: axxesit
         repo: workshop-kubernetes-gitops
