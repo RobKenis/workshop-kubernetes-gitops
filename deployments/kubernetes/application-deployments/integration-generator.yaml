@@ -11,13 +11,13 @@ spec:
   #     elements:
   #     - name: this-is-a-valid-branch
   - pullRequest:
-    bitbucket:
-      owner: axxesit
-      repo: workshop-kubernetes-gitops
-      bearerToken:
-        tokenRef:
-          secretName: bitbucket-token
-          key: token
+      bitbucket:
+        owner: axxesit
+        repo: workshop-kubernetes-gitops
+        bearerToken:
+          tokenRef:
+            secretName: bitbucket-token
+            key: token
   template:
     metadata:
       name: '{{.name}}'
