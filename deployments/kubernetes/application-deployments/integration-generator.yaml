@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: dynamic-integration
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements: []
+  template:
+    metadata:
+      name: '{{.name}}'
+      finalizers: [resources-finalizer.argocd.argoproj.io]
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: false
+      destination:
+        namespace: argocd
+        server: 'https://kubernetes.default.svc'
+      source:
+        path: deployments/kubernetes/integration
+        repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
+        targetRevision: main
+        kustomize:
+          namespace: "{{.name}}"
+          patches:
+          - target:
+              kind: Namespace
+            patch: |-
+              - op: replace
+                path: /metadata/name
+                value: {{.name}}
+          - target:
+              kind: Ingress
+            patch: |-
+              - op: replace
+                path: /spec/rules/0/host
+                value: {{.name}}.workshop.robkenis.dev
+              - op: replace
+                path: /spec/tls/0/hosts/0
+                value: {{.name}}.workshop.robkenis.dev
