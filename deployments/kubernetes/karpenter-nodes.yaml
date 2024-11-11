@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: karpenter
+  namespace: argocd
+spec:
+  destination:
+    namespace: karpenter
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: deployments/kubernetes/karpenter-nodes
+    repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
+    targetRevision: main
+  syncPolicy:
+    automated:
+      allowEmpty: false
+      prune: true
+      selfHeal: true
