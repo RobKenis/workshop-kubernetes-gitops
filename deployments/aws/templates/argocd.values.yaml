@@ -1,4 +1,5 @@
 global:
+  domain: argocd.robkenis.dev
   tolerations:
   - key: CriticalAddonsOnly
     operator: Exists
@@ -8,6 +9,8 @@ notifications:
   enabled: false
 
 configs:
+  params:
+    server.insecure: true
   cm:
     timeout.reconciliation: 60s
   repositories:

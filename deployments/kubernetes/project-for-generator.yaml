@@ -8,5 +8,15 @@ spec:
   sourceRepos:
   - '*'
   destinations:
-  - namespace: argocd
+  - namespace: '*'
     server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  namespaceResourceWhitelist:
+  - group: 'apps'
+    kind: Deployment
+  - group: ''
+    kind: Service
+  - group: 'networking.k8s.io'
+    kind: Ingress
