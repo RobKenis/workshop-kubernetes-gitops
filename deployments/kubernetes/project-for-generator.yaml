@@ -2,6 +2,6 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: my-project
+  name: generated-applications
 spec:
   description: Contains all generated applications
