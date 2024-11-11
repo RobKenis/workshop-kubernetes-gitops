@@ -12,6 +12,14 @@ spec:
     path: deployments/kubernetes/karpenter-nodes
     repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
     targetRevision: main
+    kustomize:
+      patches:
+      - target:
+          kind: EC2NodeClass
+        patch: |-
+          - op: add
+            path: /spec/role
+            value: Karpenter-workshop-gitops-20241111082910222300000018
   syncPolicy:
     automated:
       allowEmpty: false
