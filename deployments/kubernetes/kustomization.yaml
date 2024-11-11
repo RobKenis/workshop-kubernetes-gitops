@@ -4,10 +4,9 @@ kind: Kustomization
 resources:
 - karpenter.yaml
 - karpenter-nodes.yaml
-- integration.yaml
-- integration-generator.yaml
 - load-balancer-controller.yaml
 - external-dns.yaml
+- application-deployments.yaml
 
 patches:
 - target:
