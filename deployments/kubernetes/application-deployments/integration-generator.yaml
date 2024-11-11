@@ -31,9 +31,9 @@ spec:
         kustomize:
           namespace: "{{.name}}"
           images:
-          - name: ghcr.io/robkenis/workshop-kubernetes-gitops/application
-            newName: 840471932663.dkr.ecr.eu-central-1.amazonaws.com/workshop-kubernetes-gitops
-            newTag: "{{.name}}"
+          - "ghcr.io/robkenis/workshop-kubernetes-gitops/application=8404719326\
+            63.dkr.ecr.eu-central-1.amazonaws.com/workshop-kubernetes-gitops:{{\
+            .name}}"
           patches:
           - target:
               kind: Namespace
