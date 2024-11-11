@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
 - karpenter.yaml
-- karpernter-nodes.yaml
+- karpenter-nodes.yaml
 - integration.yaml
 - integration-generator.yaml
 - load-balancer-controller.yaml
