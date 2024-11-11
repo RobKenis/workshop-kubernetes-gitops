@@ -20,7 +20,7 @@ spec:
             key: token
   template:
     metadata:
-      name: '{{.name}}'
+      name: '{{.branch}}'
       finalizers: [ resources-finalizer.argocd.argoproj.io ]
     spec:
       project: generated-applications
@@ -37,24 +37,24 @@ spec:
         repoURL: 'git@github.com:RobKenis/workshop-kubernetes-gitops.git'
         targetRevision: main
         kustomize:
-          namespace: "{{.name}}"
+          namespace: "{{.branch}}"
           images:
           - "ghcr.io/robkenis/workshop-kubernetes-gitops/application=8404719326\
             63.dkr.ecr.eu-central-1.amazonaws.com/workshop-kubernetes-gitops:{{\
-            .name}}"
+            .branch}}"
           patches:
           - target:
               kind: Namespace
             patch: |-
               - op: replace
                 path: /metadata/name
-                value: {{.name}}
+                value: {{.branch}}
           - target:
               kind: Ingress
             patch: |-
               - op: replace
                 path: /spec/rules/0/host
-                value: {{.name}}.workshop.robkenis.dev
+                value: {{.branch}}.workshop.robkenis.dev
               - op: replace
                 path: /spec/tls/0/hosts/0
-                value: {{.name}}.workshop.robkenis.dev
+                value: {{.branch}}.workshop.robkenis.dev
