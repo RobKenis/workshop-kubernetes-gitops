@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: karpenter
+  name: karpenter-nodes
   namespace: argocd
 spec:
   destination:
