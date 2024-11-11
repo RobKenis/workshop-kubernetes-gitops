@@ -22,7 +22,7 @@ spec:
       - key: kubernetes.io/arch
         operator: In
         values:
-        - arm64
+        - amd64
       - key: kubernetes.io/os
         operator: In
         values:
@@ -34,4 +34,4 @@ spec:
         - spot
       - key: "karpenter.k8s.aws/instance-size"
         operator: In
-        values: ["small", "medium"]
+        values: [ "small", "medium" ]

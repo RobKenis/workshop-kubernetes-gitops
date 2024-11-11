@@ -14,7 +14,7 @@ resource "helm_release" "argocd" {
     })
   ]
 
-  depends_on = [ module.eks ]
+  depends_on = [module.eks]
 }
 
 data "aws_secretsmanager_secret" "github_ssh_key" {
