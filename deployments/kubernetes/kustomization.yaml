@@ -7,10 +7,17 @@ resources:
 - load-balancer-controller.yaml
 - external-dns.yaml
 - application-deployments.yaml
+- project-for-generator.yaml
 
 patches:
 - target:
     kind: Application
+  patch: |-
+    - op: add
+      path: /metadata/finalizers
+      value: [ resources-finalizer.argocd.argoproj.io ]
+- target:
+    kind: AppProject
   patch: |-
     - op: add
       path: /metadata/finalizers
