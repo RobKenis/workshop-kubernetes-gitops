@@ -5,14 +5,15 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  goTemplateOptions: [ "missingkey=error" ]
   generators:
   - list:
-      elements: []
+      elements:
+      - name: this-is-a-valid-branch
   template:
     metadata:
       name: '{{.name}}'
-      finalizers: [resources-finalizer.argocd.argoproj.io]
+      finalizers: [ resources-finalizer.argocd.argoproj.io ]
     spec:
       project: default
       syncPolicy:
@@ -29,6 +30,10 @@ spec:
         targetRevision: main
         kustomize:
           namespace: "{{.name}}"
+          images:
+          - name: ghcr.io/robkenis/workshop-kubernetes-gitops/application
+            newName: 840471932663.dkr.ecr.eu-central-1.amazonaws.com/workshop-kubernetes-gitops
+            newTag: "{{.name}}"
           patches:
           - target:
               kind: Namespace
