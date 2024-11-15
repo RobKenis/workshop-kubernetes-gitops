@@ -50,20 +50,20 @@ module "eks" {
   }
 
   access_entries = {
-    rob = {
-      kubernetes_groups = []
-      principal_arn     = "arn:aws:iam::840471932663:user/rob"
-      type              = "STANDARD"
-
-      policy_associations = {
-        admin = {
-          policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-          access_scope = {
-            type = "cluster"
-          }
-        }
-      }
-    }
+#     rob = {
+#       kubernetes_groups = []
+#       principal_arn     = "arn:aws:iam::840471932663:user/rob"
+#       type              = "STANDARD"
+#
+#       policy_associations = {
+#         admin = {
+#           policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+#           access_scope = {
+#             type = "cluster"
+#           }
+#         }
+#       }
+#     }
   }
 
   tags = {

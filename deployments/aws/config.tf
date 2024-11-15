@@ -13,7 +13,7 @@ terraform {
 
 terraform {
   backend "s3" {
-    bucket         = "workshop-gitops-terraform-bucket-x8i6pxmlllok"
+    bucket         = "workshop-kubernetes-gitops-terraform-bucket-bdoh6qip5wu5"
     dynamodb_table = "terraform-state-lock"
     key            = "terraform.tfstate"
     region         = "eu-central-1"

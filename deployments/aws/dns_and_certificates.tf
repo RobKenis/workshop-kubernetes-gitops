@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "wildcard" {
-  domain_name       = "*.workshop.robkenis.dev"
+  domain_name       = "*.sandbox-2024.axxes.cloud"
   validation_method = "DNS"
 
   lifecycle {
@@ -7,8 +7,8 @@ resource "aws_acm_certificate" "wildcard" {
   }
 }
 
-resource "aws_route53_zone" "workshop" {
-  name = "workshop.robkenis.dev"
+data "aws_route53_zone" "workshop" {
+  name = "sandbox-2024.axxes.cloud"
 }
 
 resource "aws_route53_record" "validation" {
@@ -25,7 +25,7 @@ resource "aws_route53_record" "validation" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = aws_route53_zone.workshop.zone_id
+  zone_id         = data.aws_route53_zone.workshop.zone_id
 }
 
 resource "aws_acm_certificate_validation" "wildcard" {

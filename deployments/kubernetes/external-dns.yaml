@@ -14,7 +14,7 @@ spec:
       values: |
         txtOwnerId: workshop-gitops
         domainFilters:
-          - workshop.robkenis.dev
+          - sandbox-2024.axxes.cloud
         policy: sync
   destination:
     server: "https://kubernetes.default.svc"

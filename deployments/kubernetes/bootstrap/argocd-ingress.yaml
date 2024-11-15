@@ -13,7 +13,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: argocd.workshop.robkenis.dev
+  - host: argocd.workshop-2024.axxes.cloud
     http:
       paths:
       - backend:
@@ -25,4 +25,4 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - argocd.workshop.robkenis.dev
+    - argocd.workshop-2024.axxes.cloud

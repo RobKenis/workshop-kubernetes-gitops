@@ -19,7 +19,7 @@ spec:
         patch: |-
           - op: add
             path: /spec/role
-            value: Karpenter-workshop-gitops-20241111082910222300000018
+            value: Karpenter-workshop-gitops-2024111506365272240000001b
   syncPolicy:
     automated:
       allowEmpty: false

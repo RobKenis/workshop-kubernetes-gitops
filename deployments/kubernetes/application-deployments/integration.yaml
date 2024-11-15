@@ -25,10 +25,10 @@ spec:
         patch: |-
           - op: replace
             path: /spec/rules/0/host
-            value: integration.workshop.robkenis.dev
+            value: integration.sandbox-2024.axxes.cloud
           - op: replace
             path: /spec/tls/0/hosts/0
-            value: integration.workshop.robkenis.dev
+            value: integration.sandbox-2024.axxes.cloud
   project: default
   syncPolicy:
     automated:
