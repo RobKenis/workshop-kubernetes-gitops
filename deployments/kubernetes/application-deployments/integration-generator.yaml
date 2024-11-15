@@ -7,18 +7,18 @@ spec:
   goTemplate: true
   goTemplateOptions: [ "missingkey=error" ]
   generators:
-  # - list:
-  #     elements:
-  #     - name: this-is-a-valid-branch
-  - pullRequest:
-      requeueAfterSeconds: 60
-      bitbucket:
-        owner: axxesit
-        repo: workshop-kubernetes-gitops
-        bearerToken:
-          tokenRef:
-            secretName: bitbucket-token
-            key: token
+    # - list:
+    #     elements:
+    #     - name: this-is-a-valid-branch
+    - pullRequest:
+        requeueAfterSeconds: 60
+        bitbucket:
+          owner: axxesit
+          repo: workshop-kubernetes-gitops
+          bearerToken:
+            tokenRef:
+              secretName: bitbucket-token
+              key: token
   template:
     metadata:
       name: '{{.branch}}'
@@ -40,22 +40,20 @@ spec:
         kustomize:
           namespace: "{{.branch}}"
           images:
-          - "ghcr.io/robkenis/workshop-kubernetes-gitops/application=8404719326\
-            63.dkr.ecr.eu-central-1.amazonaws.com/workshop-kubernetes-gitops:{{\
-            .branch}}"
+            - "ghcr.io/robkenis/workshop-kubernetes-gitops/application=211125550721.dkr.ecr.eu-central-1.amazonaws.com/workshop-kubernetes-gitops:{{.branch}}"
           patches:
-          - target:
-              kind: Namespace
-            patch: |-
-              - op: replace
-                path: /metadata/name
-                value: {{.branch}}
-          - target:
-              kind: Ingress
-            patch: |-
-              - op: replace
-                path: /spec/rules/0/host
-                value: {{.branch}}.sandbox-2024.axxes.cloud
-              - op: replace
-                path: /spec/tls/0/hosts/0
-                value: {{.branch}}.sandbox-2024.axxes.cloud
+            - target:
+                kind: Namespace
+              patch: |-
+                - op: replace
+                  path: /metadata/name
+                  value: {{.branch}}
+            - target:
+                kind: Ingress
+              patch: |-
+                - op: replace
+                  path: /spec/rules/0/host
+                  value: {{.branch}}.sandbox-2024.axxes.cloud
+                - op: replace
+                  path: /spec/tls/0/hosts/0
+                  value: {{.branch}}.sandbox-2024.axxes.cloud
